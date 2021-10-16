@@ -1,0 +1,16 @@
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/Assigment1
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/Assigment1.deps.json
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/Assigment1.runtimeconfig.json
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/Assigment1.runtimeconfig.dev.json
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/Assigment1.dll
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/ref/Assigment1.dll
+/home/staz/Documents/Tutorial/phase1/Assigment1/bin/Debug/net5.0/Assigment1.pdb
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.csproj.AssemblyReference.cache
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.GeneratedMSBuildEditorConfig.editorconfig
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.AssemblyInfoInputs.cache
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.AssemblyInfo.cs
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.csproj.CoreCompileInputs.cache
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.dll
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/ref/Assigment1.dll
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.pdb
+/home/staz/Documents/Tutorial/phase1/Assigment1/obj/Debug/net5.0/Assigment1.genruntimeconfig.cache
