@@ -16,6 +16,9 @@ namespace Assigment1
         //memory array
         public static byte[] arr = { 48, 1, 0, 1, 48, 2, 127, 255, 25, 1, 2, 243 };
 
+        //gpr array
+        public static int[] gpr = new int[16];
+
         //initialize program counter and set it to zero
         private static int programCounter = 0;
         public static int r1(){
@@ -30,36 +33,38 @@ namespace Assigment1
         public static string returnHex(int programCounter){
             return arr[programCounter].ToString("X");
         }
+        public static void log(string opCode)
+        {
+                    Console.WriteLine(OpCodeResponse.GetDefaultMessageForStatusCode(opCode));
+                    foreach(var value in gpr) Console.WriteLine(value);
+                    Console.WriteLine();
+        }
         
         public static void Main(string[] args)
         {
 
-            //grp array with default value 0
-            int[] gpr = new int[16];
+            //initializing gpr with 0 values
+            
             for (int i = 0; i < 16; i++) gpr[i] = 0;
 
             var immediateRepo = new ImmediateRepository();
             var registerRepo = new RegisterRepository();
             while (true)
             {
-                if  (returnHex(programCounter) == Helper.MOVI)
+                if  (returnHex(programCounter) == IHelper.MOVI)
                 {
                     gpr = immediateRepo.movei(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    Console.WriteLine(OpCodeResponse.GetDefaultMessageForStatusCode(Helper.MOVI));
-                    foreach(var value in gpr) Console.WriteLine(value);
-                    Console.WriteLine();
+                    log(IHelper.MOVI);
                     
                 }
-                else if(returnHex(programCounter)==Helper.MUL){
+                else if(returnHex(programCounter)==RHelper.MUL){
                     gpr = registerRepo.mull(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    Console.WriteLine(OpCodeResponse.GetDefaultMessageForStatusCode(Helper.MUL));
-                    foreach(var value in gpr) Console.WriteLine(value);
-                    Console.WriteLine();
+                    log(RHelper.MUL);
                 }
-                if(returnHex(programCounter)==Helper.END){
-                    Console.WriteLine(OpCodeResponse.GetDefaultMessageForStatusCode(Helper.END));
+                if(returnHex(programCounter)==NHelper.END){
+                    log(NHelper.END);
                     break;
                 }
             }

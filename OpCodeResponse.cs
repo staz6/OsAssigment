@@ -8,9 +8,9 @@ namespace Assigment1
         public static string GetDefaultMessageForStatusCode(string statusCode)
         {
             return statusCode switch{
-                Helper.MOVI => "MOVI",
-                Helper.MUL => "MUL",
-                Helper.END => "F3 End Successfully",
+                RHelper.MUL => "MUL",
+                IHelper.MOVI => "MOVI",   
+                NHelper.END => "F3 End Successfully",
                 _ => "Welcome to the dark side"
                 
             };
