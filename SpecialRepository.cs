@@ -3,7 +3,7 @@ namespace Assigment1
 {
     public class SpecialRepository
     {
-        public int registerFlagCheck(int output,int r1,int r2)
+        public int registerFlagCheck(int output)
         {
             if(output ==0)
             {
@@ -18,6 +18,15 @@ namespace Assigment1
                 return 3;
             }
             
+            return 4;
+        }
+        
+
+        public int carryFlagCheck(int output)
+        {
+            if(output > Int16.MaxValue){
+                return 0;
+            }
             return 4;
         }
     }

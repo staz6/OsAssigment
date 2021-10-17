@@ -1,5 +1,7 @@
 using System.ComponentModel.Design;
 using System;
+using Assigment1.Helpers;
+
 namespace Assigment1
 {
     public static  class OpCodeResponse 
@@ -27,12 +29,14 @@ namespace Assigment1
                 IHelper.BNZ=>"BNZ NUM",
                 IHelper.BC=>"BC NUM",
                 IHelper.BS=>"BS NUM",
-                IHelper.JMP=>"JMP NUM"
+                IHelper.JMP=>"JMP NUM",
 
-                // RHelper.MUL => "MUL",
-                // IHelper.MOVI => "MOVI",   
-                // NHelper.END => "F3 End Successfully",
-                // _ => "Welcome to the dark side"
+                MHelper.MOVL => "MOVL",
+                MHelper.MOVS => "MOVS",
+
+                 
+                NHelper.END => "F3 End Successfully",
+                _ => "Welcome to the dark side"
                 
             };
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Assigment1.Helpers;
 
 namespace Assigment1
 {
@@ -7,9 +8,12 @@ namespace Assigment1
     /// git : https://github.com/staz6/OsAssigment.git
     /// OS : Linux, might have to run to dotnet restore if u want to run this on microsoft windows, since sometime csproj file get buggy
     /// Classes:
-    /// RegisterRepository is for the register-register functions.
-    /// ImmediateRepository is for imediate-register functions.
-    /// Helper classes is just for my sanity.
+    /// RegisterRepository is for the register-register instruction functions.
+    /// ImmediateRepository is for imediate-register instruction functions.
+    /// Memory Repository is for memory register instruction functions.
+    /// SOperandRepository is for single operand instruction functions.
+    /// SpecialRepository is to deal with special cases like update flag, check carry etc.
+    /// Helper classes are just for my sanity.
     /// OpCodeResponse is just to handle console output 
     /// </summary>
     public class Program
@@ -56,12 +60,17 @@ namespace Assigment1
             for (int i = 0; i < 16; i++) gpr[i] = 0;
 
             /// <summary>
-            /// Object For Register repository and immediate repository
+            /// Object For Register repository, immediate reposiry, memory repositry , single operand repository
+            /// no operand repository
             /// </summary>
             var immediateRepo = new ImmediateRepository();
             var registerRepo = new RegisterRepository();
+            var memoryRepo = new MemoryRepository();
+            var sOperandRepo = new SOperandRepository();
             while (true)
             {
+                //this is just so i can point to previoud program counter to call the log function, 
+                var tmpLog= returnHex(programCounter);
 
                 /// <summary>
                 /// Start Register-register instruction 
@@ -76,37 +85,30 @@ namespace Assigment1
                 if(returnHex(programCounter)==RHelper.MOV){
                     gpr = registerRepo.mov(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.MOV);
                 }
                 else if(returnHex(programCounter) == RHelper.ADD){
                     gpr = registerRepo.add(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.ADD);
                 }
                 else if(returnHex(programCounter) == RHelper.SUB){
                     gpr = registerRepo.sub(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.SUB);
                 }
                 else if(returnHex(programCounter)==RHelper.MUL){
                     gpr = registerRepo.mull(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.MUL);
                 }
                 else if(returnHex(programCounter) == RHelper.DIV){
                     gpr = registerRepo.div(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.DIV);
                 }
                 else if(returnHex(programCounter) == RHelper.AND){
                     gpr = registerRepo.and(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.AND);
                 }
                 else if(returnHex(programCounter) == RHelper.OR){
                     gpr = registerRepo.or(gpr, arr[r1()], arr[r2()]);
                     programCounter=programCounter+3;
-                    log(RHelper.OR);
                 }
                 /// <summary>
                 /// End of Register-register function
@@ -127,49 +129,42 @@ namespace Assigment1
                 {
                     gpr = immediateRepo.movei(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.MOVI);
                     
                 }
                 else if  (returnHex(programCounter) == IHelper.ADDI)
                 {
                     gpr = immediateRepo.addi(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.ADDI);
                     
                 }
                 else if  (returnHex(programCounter) == IHelper.SUBI)
                 {
                     gpr = immediateRepo.subi(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.SUBI);
                     
                 }
                  else if  (returnHex(programCounter) == IHelper.MULI)
                 {
                     gpr = immediateRepo.muli(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.MULI);
                     
                 }
                  else if  (returnHex(programCounter) == IHelper.DIVI)
                 {
                     gpr = immediateRepo.divi(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.DIVI);
                     
                 }
                  else if  (returnHex(programCounter) == IHelper.ANDI)
                 {
                     gpr = immediateRepo.andi(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.ANDI);
                     
                 }
                  else if  (returnHex(programCounter) == IHelper.ORI)
                 {
                     gpr = immediateRepo.ori(gpr, arr[r1()], arr[r2()], arr[r3()]);
                     programCounter=programCounter+4;
-                    log(IHelper.ORI);
                     
                 }
                 /// <summary>
@@ -180,44 +175,113 @@ namespace Assigment1
                 else if  (returnHex(programCounter) == IHelper.BZ)
                 {
                     programCounter = immediateRepo.bz(programCounter, gpr[9], arr[r1()]);
-                    log(IHelper.BZ);
                     
                 }
                 else if  (returnHex(programCounter) == IHelper.BNZ)
                 {
                     programCounter = immediateRepo.bnz(programCounter, gpr[9], arr[r1()]);
-                    log(IHelper.BZ);
                     
                 }
                 else if  (returnHex(programCounter) == IHelper.BC)
                 {
                     programCounter = immediateRepo.bc(programCounter, gpr[9], arr[r1()]);
-                    log(IHelper.BZ);
                     
                 }
                 else if  (returnHex(programCounter) == IHelper.BS)
                 {
                     programCounter = immediateRepo.bs(programCounter, gpr[9], arr[r1()]);
-                    log(IHelper.BZ);
                     
                 }
                 else if  (returnHex(programCounter) == IHelper.JMP)
                 {
                     programCounter = immediateRepo.jump(programCounter,  arr[r1()]);
-                    log(IHelper.BZ);
                     
                 }
                 /// <summary>
                 /// End of intermediate instructions, still need to implement CALL AND ACT
                 /// </summary>
                 
+                /// <summary>
+                /// Start Memory register instruction
+                /// </summary>
                 
+                /// <summary>
+                /// movl 
+                /// </summary>
+                /// <param name="gpr, r1 index, memory value"></param>
+                /// <returns>gpr</returns>
+                else if(returnHex(programCounter) == MHelper.MOVL)
+                {
+                    gpr=memoryRepo.movl(gpr,arr[r1()],arr[r2()]);
+                    programCounter=programCounter+3;
+                }
+
+                /// <summary>
+                /// movs 
+                /// </summary>
+                /// <param name="gpr, r1 index, memory array,memory index"></param>
+                /// <returns>memory array arr</returns>
+                else if(returnHex(programCounter) == MHelper.MOVS)
+                {
+                    arr=memoryRepo.movs(gpr,arr[r1()],arr,arr[r2()]);
+                    programCounter=programCounter+3;
+                }
                 
+                /// <summary>
+                /// Start Single operand register instructions 
+                /// Just calling the function here if the memoryaddres[programCOunter] matches
+                /// for actual comment goto SOperandRepository
+                /// </summary>
+                /// <returns>gpr</returns>
                 
+                else if(returnHex(programCounter)==SOHelper.SHL)
+                {
+                    gpr = sOperandRepo.shl(gpr,arr[r1()]);
+                    programCounter = programCounter +2;
+                }
+                else if(returnHex(programCounter)==SOHelper.SHR)
+                {
+                    gpr = sOperandRepo.shr(gpr,arr[r1()]);
+                    programCounter = programCounter +2;
+                }
+                else if(returnHex(programCounter)==SOHelper.RTL)
+                {
+                    gpr = sOperandRepo.rtl(gpr,arr[r1()],arr[r2()]);
+                    programCounter = programCounter +3;
+                }
+                else if(returnHex(programCounter)==SOHelper.RTR)
+                {
+                    gpr = sOperandRepo.rtr(gpr,arr[r1()],arr[r2()]);
+                    programCounter = programCounter +3;
+                }
+                else if(returnHex(programCounter)==SOHelper.INC)
+                {
+                    gpr = sOperandRepo.inc(gpr,arr[r1()]);
+                    programCounter = programCounter +2;
+                }
+                 else if(returnHex(programCounter)==SOHelper.DEC)
+                {
+                    gpr = sOperandRepo.dec(gpr,arr[r1()]);
+                    programCounter = programCounter +2;
+                }
+                
+        
+                /// <summary>
+                /// Start no operand instruction 
+                /// ingnore f1 for new
+                /// if f2 do nothing, 
+                /// if f3 END
+                /// </summary>
+                else if(returnHex(programCounter)==NHelper.NOOP)
+                {
+                    programCounter=programCounter+1;
+                }
                 else if(returnHex(programCounter)==NHelper.END){
                     log(NHelper.END);
                     break;
                 }
+                // print output on console.
+                log(tmpLog);
             }
             Console.WriteLine("End of Loop");
             Console.WriteLine("Program counter is point to {0}  hex conversion = {1}", arr[programCounter],arr[programCounter].ToString("X"));
