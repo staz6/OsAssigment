@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/staz/Documents/Tutorial/phase1/Assigment1/Assigment1.csproj",
+      "projectUniqueName": "/home/staz/Videos/Os/part2/OsAssigment/Assigment1.csproj",
       "projectName": "Assigment1",
-      "projectPath": "/home/staz/Documents/Tutorial/phase1/Assigment1/Assigment1.csproj",
+      "projectPath": "/home/staz/Videos/Os/part2/OsAssigment/Assigment1.csproj",
       "packagesPath": "/home/staz/.nuget/packages/",
-      "outputPath": "/home/staz/Documents/Tutorial/phase1/Assigment1/obj/",
+      "outputPath": "/home/staz/Videos/Os/part2/OsAssigment/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/staz/.nuget/NuGet/NuGet.Config"
