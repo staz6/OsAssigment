@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace OsAssigment.Helpers
@@ -13,6 +14,12 @@ namespace OsAssigment.Helpers
     public class Data
     {
         public string Name { get; set; }
-        public List<byte> Value { get; set; }
+
+        public byte Piority { get; set; }
+        public byte ProcessId{get;set;}
+        public byte DataSize{get;set;}
+        public List<byte> DataFrame { get; set; }
+        public List<byte> CodeFrame{get;set;}
     }
+    
 }
