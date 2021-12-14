@@ -22,8 +22,8 @@ namespace Assigment1
         /// <returns>updated gpr</returns>
         public int[] shl(int[] gpr,int r1)
         {
-            gpr[r1] = gpr[r1] << 1;
-            int flagCheck = specialRepo.carryFlagCheck(gpr[r1]);
+            gpr[1] = gpr[1] << 1;
+            int flagCheck = specialRepo.carryFlagCheck(gpr[1]);
             gpr[9] = flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -35,8 +35,8 @@ namespace Assigment1
         /// <returns>updated gpr</returns>
         public int[] shr(int[] gpr,int r1)
         {
-            gpr[r1] = gpr[r1] >> 1;
-            int flagCheck = specialRepo.carryFlagCheck(gpr[r1]);
+            gpr[1] = gpr[1] >> 1;
+            int flagCheck = specialRepo.carryFlagCheck(gpr[1]);
             gpr[9] = flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -49,8 +49,8 @@ namespace Assigment1
         /// <returns>updated gpr</returns>
         public int[] rtl(int[] gpr,int r1,int offset)
         {
-            gpr[r1] = Convert.ToInt16(BitOperations.RotateLeft(Convert.ToUInt16(gpr[r1]),offset));
-            int flagCheck = specialRepo.carryFlagCheck(gpr[r1]);
+            gpr[1] = Convert.ToInt16(BitOperations.RotateLeft(Convert.ToUInt16(gpr[1]),offset));
+            int flagCheck = specialRepo.carryFlagCheck(gpr[1]);
             gpr[9] = flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -63,8 +63,8 @@ namespace Assigment1
         /// <returns>updated gpr</returns>
          public int[] rtr(int[] gpr,int r1,int offset)
         {
-            gpr[r1] = Convert.ToInt16(BitOperations.RotateRight(Convert.ToUInt16(gpr[r1]),offset));
-            int flagCheck = specialRepo.carryFlagCheck(gpr[r1]);
+            gpr[1] = Convert.ToInt16(BitOperations.RotateRight(Convert.ToUInt16(gpr[1]),offset));
+            int flagCheck = specialRepo.carryFlagCheck(gpr[1]);
             gpr[9] = flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -76,8 +76,8 @@ namespace Assigment1
         /// <returns>gpr</returns>
         public int[] inc(int[] gpr,int r1)
         {
-            gpr[r1] = gpr[r1] + 1;
-            int flagCheck = specialRepo.carryFlagCheck(gpr[r1]);
+            gpr[1] = gpr[1] + 1;
+            int flagCheck = specialRepo.carryFlagCheck(gpr[1]);
             gpr[9] = flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -89,8 +89,8 @@ namespace Assigment1
         /// <returns>gpr</returns>
         public int[] dec(int[] gpr,int r1)
         {
-            gpr[r1] = gpr[r1] - 1;
-            int flagCheck = specialRepo.carryFlagCheck(gpr[r1]);
+            gpr[1] = gpr[1] - 1;
+            int flagCheck = specialRepo.carryFlagCheck(gpr[1]);
             gpr[9] = flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }

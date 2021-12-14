@@ -16,7 +16,9 @@ namespace OsAssigment.Helpers
         public byte programCounter{get;set;} =0;
         public byte[] GPR {get;set;} = Enumerable.Repeat<byte>(0, 16).ToArray();
          public List<byte> DataPage { get; set; }
-        public List<byte> CodePage{get;set;}
+        public List<CodePage> CodePages{get;set;}
     }
-    
+    public class CodePage{
+        public List<byte> Values{get;set;}
+    }
 }

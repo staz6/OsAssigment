@@ -21,15 +21,15 @@ namespace Assigment1
         {
             int[] tmp = gpr;
             string hexValue = r2.ToString("X") + r3.ToString("X");
-            gpr[r1] = Convert.ToInt16(hexValue, 16);
+            gpr[1] = Convert.ToInt16(hexValue, 16);
             return gpr;
         }
         
         public int[] addi(int[] gpr,int r1,int r2,int r3)
         {
             string hexValue = r2.ToString("X") + r3.ToString("X");
-            gpr[r1]=gpr[r1] + Convert.ToInt16(hexValue,16);
-            int flagCheck=specialRepo.registerFlagCheck(gpr[r1]);
+            gpr[1]=gpr[1] + Convert.ToInt16(hexValue,16);
+            int flagCheck=specialRepo.registerFlagCheck(gpr[1]);
             gpr[9]= flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -37,8 +37,8 @@ namespace Assigment1
         {
             int[] tmp = gpr;
             string hexValue = r2.ToString("X") + r3.ToString("X");
-            gpr[r1]=gpr[r1] - Convert.ToInt16(hexValue,16);
-            int flagCheck=specialRepo.registerFlagCheck(gpr[r1]);
+            gpr[1]=gpr[1] - Convert.ToInt16(hexValue,16);
+            int flagCheck=specialRepo.registerFlagCheck(gpr[1]);
             gpr[9]= flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -46,8 +46,8 @@ namespace Assigment1
         {
             int[] tmp = gpr;
             string hexValue = r2.ToString("X") + r3.ToString("X");
-            gpr[r1]=gpr[r1] * Convert.ToInt16(hexValue,16);
-            int flagCheck=specialRepo.registerFlagCheck(gpr[r1]);
+            gpr[1]=gpr[1] * Convert.ToInt16(hexValue,16);
+            int flagCheck=specialRepo.registerFlagCheck(gpr[1]);
             gpr[9]= flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -55,8 +55,8 @@ namespace Assigment1
         {
             int[] tmp = gpr;
             string hexValue = r2.ToString("X") + r3.ToString("X");
-            gpr[r1]=gpr[r1] / Convert.ToInt16(hexValue,16);
-            int flagCheck=specialRepo.registerFlagCheck(gpr[r1]);
+            gpr[1]=gpr[1] / Convert.ToInt16(hexValue,16);
+            int flagCheck=specialRepo.registerFlagCheck(gpr[1]);
             gpr[9]= flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -64,8 +64,8 @@ namespace Assigment1
         {
             int[] tmp = gpr;
             string hexValue = r2.ToString("X") + r3.ToString("X");
-            gpr[r1]=gpr[r1] & Convert.ToInt16(hexValue,16);
-            int flagCheck=specialRepo.registerFlagCheck(gpr[r1]);
+            gpr[1]=gpr[1] & Convert.ToInt16(hexValue,16);
+            int flagCheck=specialRepo.registerFlagCheck(gpr[1]);
             gpr[9]= flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }
@@ -74,8 +74,8 @@ namespace Assigment1
             int[] tmp = gpr;
             string hexValue = r2.ToString("X") + r3.ToString("X");
             #pragma warning disable CS0675
-            gpr[r1]=gpr[r1] | Convert.ToInt16(hexValue,16);
-            int flagCheck=specialRepo.registerFlagCheck(gpr[r1]);
+            gpr[1]=gpr[1] | Convert.ToInt16(hexValue,16);
+            int flagCheck=specialRepo.registerFlagCheck(gpr[1]);
             gpr[9]= flagCheck != 4 ? flagCheck : gpr[9];
             return gpr;
         }

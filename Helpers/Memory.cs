@@ -18,8 +18,13 @@ namespace OsAssigment.Helpers
         public byte Piority { get; set; }
         public byte ProcessId{get;set;}
         public byte DataSize{get;set;}
-        public List<byte> DataFrame { get; set; }
-        public List<byte> CodeFrame{get;set;}
+        public List<byte> DataFrame { get; set; } 
+        public List<CodeFrame> CodeFrames{get;set;}
+        
+    }
+
+    public class CodeFrame{
+        public List<byte> Values{get;set;}
     }
     
 }

@@ -17,7 +17,7 @@ namespace Assigment1
         /// <returns>updated gpr</returns>
         public int[] movl(int[] gpr,int r1,int memoryValue)
         {
-            gpr[r1]=memoryValue;
+            gpr[1]=memoryValue;
             return gpr;
         }
         /// <summary>
@@ -31,7 +31,7 @@ namespace Assigment1
         /// <returns>updated memory array</returns>
         public byte[] movs(int[] gpr,int r1, byte[] memory,int index)
         {
-            memory[index]=Convert.ToByte(gpr[r1]);
+            memory[index]=Convert.ToByte(gpr[1]);
             return memory;
         }
     }
